@@ -28,6 +28,13 @@ This section should cover the following items:
 * Metrics of Success: Latency could be measured in time (seconds) delay from the point of collection till the classification is obtained. Percentage accuracy with the right and wrong predictions can also be measured.
 
 # 2. Related Work
+Human activity recognition is now performed using a variety of acquisition devices ranging from smartphones sensors, wearable devices, and video cameras. As the applications utilizing this information are growing, so is the AI behind it to extract more information. As more sensing technologies for HAR come into picture, optimizing the networks deployed and improving the reliability of the sensing devices are always actively researched. Identifying user’s actions can be used actively to provide them with assistance. Human activity recognition is broadly classified into – vision based, and sensor based. Since vision based uses a lot of CV techniques, it could have issues like privacy leaks and occlusion making it the unfavorable choice in such situations. Hence in such cases, sensor-based methods like accelerometers, acoustic sensors and radars are used.
+
+Radar based HAR has slowly drawn attention for multiple reasons – one of them being privacy since it collects data that does not directly evade user privacy. It is also robust and can work in harsh conditions. Another reason is it’s ease for use, since it doesn’t have to be attached to the person and can be used in a group as well. Amongst different radars, those commonly used for HAR include –
+
+Continuous Wave radar – This emits stable frequency continuous wave signal. It has low power consumption and can be extended to use for portable applications. A few CW systems include – Doppler radar (acquires Doppler/ radial velocity of targets) , FMCW radar (provides range, speed info of target) and Interferometry radar ( provides angular velocity of target).
+UWB radar - This provides fine resolution of range and can identify major scattering centers of target.
+The mmwave radar consists of a FMCW transceiver. The TI’s mmwave radar range is a popular one. Point clouds having the x,y,z coordinates in a 3D plane are the outputs which are given by the sensors of the mmwave radar. Increasing the bandwidth in turn increases the range resolution (i.e., ability of radar to differentiate between two targets). Since the mmwave operates in a range between 30 - 300GHz, they’re smaller is size (inversely proportional to frequency).
 
 # 3. Technical Approach
 
@@ -50,4 +57,13 @@ ii.	Classifiers – Although RadHAR tried deriving efficiency and testing on  ab
 
 # 5. Discussion and Conclusions
 
-# 6. References
+# 6. Challenges faced 
+We ran into the following issues while trying to configure the hardware provided and software  -
+
+- Jetson module wasn't entering recovery mode in order to flash the system with the OS binary provided online : Flashing had to be done via the Nvidia SDK manager provided after the jetson nano platform entered into the recovery mode. Even after the right jumper and hardware settings though, the module wasn't detected by the host machine to flash the OS binary provided. Another method we used was the bootable USB one , however since the Jetson nano was an older A02 version , it didn't have support for the same. Only the B01 version supported using bootable USB to reset the module. Hence, eventually we had to follow another method using the microSD card provided and an etcher software to write the image to the SD card to eventually get the Jetson module up.
+- The preprocessing block voxels.py run on a single class of input data failed stating - session crashed after using all available RAM : Here preprocessing run on any class seperately would abort with a memory error every time an array with shape (1200, 60, 10, 32, 32) of the float64_t data type was trying to be mem-allocated. The first dimension here shouldn't increase past 1200. Hence we tried running preprocessing on smaller chunks of data by dividing input data of each class into 5 sub folders. Thus every time the preprocessing was done for a sub folder, the RAM was cleared and the issue was resolved with smaller .npz files.
+- Parsing the real-time point cloud data from the mmwaveradar was also challenging since all the demo applications record data into .txt file format. Since the data structure of the out-of-the box demo was not publically available in their documention folder, it took us a lot of time to figure out the packet structure.
+
+# 7. References
+1. Akash Deep Singh, Sandeep Singh Sandha, Luis Garcia, and Mani Srivastava. 2019. RadHAR: Human Activity Recognition from Point Clouds Generated through a Millimeter-wave Radar. In Proceedings of the 3rd ACM Workshop on Millimeter-wave Networks and Sensing Systems (mmNets'19). Association for Computing Machinery, New York, NY, USA, 51–56. https://doi.org/10.1145/3349624.3356768
+2. D. Salami, R. Hasibi, S. Palipana, P. Popovski, T. Michoel and S. Sigg, "Tesla-Rapture: A Lightweight Gesture Recognition System from mmWave Radar Sparse Point Clouds," in IEEE Transactions on Mobile Computing, doi: 10.1109/TMC.2022.3153717.
