@@ -21,19 +21,20 @@ This section should cover the following items:
 * Potential Impact: If successful this device could be placed in environments where monitoring needs to be done on a group, for example, in a daycare for toddlers, at an old age home for elderly people or in hospitals for patients. It can also be effectively used to track workouts. In such scenarios camera-based could be another option, but this might end up invading privacy, thus making the users uncomfortable. More importantly, these devices are agnostic to lighting conditions. Therefore, they are more efficient than vision techniques, where lighting contitions are very important factors to maintain accuracy. Hence radars can be efficiently utilized with contactless sensing in such places since it collects a very minimal data to train the networks. In most of the applications mentioned above, It is essential that the activity is interpretted or classified real-time. Hence, our project focusses on implemeting the already existing model in real-time to make these algorithms most effective. We will also try to reduce the latency of the predictions and ensure better efficiency
 * Challenges: What are the challenges and risks?
 * Requirements for Success: 
-- Less Latency for prediction.
-- Maintain the accuracy within the same accuracy margin as metioned in the offline implementation of the model.
-- Ease to run the module with limited resources and computing power on jetson
-- Seamless commulnication interface between the MMWAVE Radar and Nvidia Jetson module to extract the required communication.
+  - Less Latency for prediction.
+  - Maintain the accuracy within the same accuracy margin as metioned in the offline implementation of the model.
+  - Ease to run the module with limited resources and computing power on jetson
+  - Seamless commulnication interface between the MMWAVE Radar and Nvidia Jetson module to extract the required communication.
 * Metrics of Success: Latency could be measured in time (seconds) delay from the point of collection till the classification is obtained. Percentage accuracy with the right and wrong predictions can also be measured.
 
 # 2. Related Work
-Human activity recognition is now performed using a variety of acquisition devices ranging from smartphones sensors, wearable devices, and video cameras. As the applications utilizing this information are growing, so is the AI behind it to extract more information. As more sensing technologies for HAR come into picture, optimizing the networks deployed and improving the reliability of the sensing devices are always actively researched. Identifying user’s actions can be used actively to provide them with assistance. Human activity recognition is broadly classified into – vision based, and sensor based. Since vision based uses a lot of CV techniques, it could have issues like privacy leaks and occlusion making it the unfavorable choice in such situations. Hence in such cases, sensor-based methods like accelerometers, acoustic sensors and radars are used.
+Human activity recognition is now performed using a variety of acquisition devices ranging from smartphones sensors, wearable devices, and video cameras. As the applications utilizing this information are growing, so is the AI behind it to extract more information. As more sensing technologies for HAR come into picture, optimizing the networks deployed and improving the reliability of the sensing devices are always actively researched. Identifying user’s actions can be used actively to provide them with assistance. Human activity recognition is broadly classified into – vision based, and sensor based. Since vision based uses a lot of CV techniques, it could have issues like privacy leaks and occlusion making it the unfavorable choice in such situations. Hence in such cases, sensor-based methods like accelerometers, acoustic sensors and radars are used.|
 
 Radar based HAR has slowly drawn attention for multiple reasons – one of them being privacy since it collects data that does not directly evade user privacy. It is also robust and can work in harsh conditions. Another reason is it’s ease for use, since it doesn’t have to be attached to the person and can be used in a group as well. Amongst different radars, those commonly used for HAR include –
 
-Continuous Wave radar – This emits stable frequency continuous wave signal. It has low power consumption and can be extended to use for portable applications. A few CW systems include – Doppler radar (acquires Doppler/ radial velocity of targets) , FMCW radar (provides range, speed info of target) and Interferometry radar ( provides angular velocity of target).
-UWB radar - This provides fine resolution of range and can identify major scattering centers of target.
+- Continuous Wave radar – This emits stable frequency continuous wave signal. It has low power consumption and can be extended to use for portable applications. A few CW systems include – Doppler radar (acquires Doppler/ radial velocity of targets) , FMCW radar (provides range, speed info of target) and Interferometry radar ( provides angular velocity of target).
+- UWB radar - This provides fine resolution of range and can identify major scattering centers of target.
+
 The mmwave radar consists of a FMCW transceiver. The TI’s mmwave radar range is a popular one. Point clouds having the x,y,z coordinates in a 3D plane are the outputs which are given by the sensors of the mmwave radar. Increasing the bandwidth in turn increases the range resolution (i.e., ability of radar to differentiate between two targets). Since the mmwave operates in a range between 30 - 300GHz, they’re smaller is size (inversely proportional to frequency).
 
 # 3. Technical Approach
@@ -53,12 +54,14 @@ B.	Jetson Nano platform – Post data collection, the pre processing and  classi
 i.	Data Preprocessing – Here the point clouds are converted to voxels (i.e. dimensions 10*32*32). The value here of a voxel is the number of data points which are within the boundaries. The activities performed  - talk about window size -
 -talk about samples obtained and time stamps -
 
-ii.	Classifiers – Although RadHAR tried deriving efficiency and testing on  about four different models , for our project we’ve chosen the model with the highest efficiency. This is the Time – distributed CNN + Bidirectional LSTM classifier. Although pre trained HDF5 models for this were available, on prediction with these models, using the live data efficiency is low. Hence we retrained this module which consisted of 3 time distributed convolution modules and had a bi directional and output layer. Model was saved after    epochs.
+ii.	Classifiers – Although RadHAR tried deriving efficiency and testing on  about four different models , for our project we’ve chosen the model with the highest efficiency. This is the Time – distributed CNN + Bidirectional LSTM classifier. Although pre trained HDF5 models for this were available, on prediction with these models, using the live data efficiency is low. Hence we also tried to retrained this module which consisted of 3 time distributed convolution modules and had a bi directional and output layer, but ran into a couple of issues which are discussed in depth later
 
 
 # 4. Evaluation and Results
-Post the setup and trying to get both the sides of the pipeline working, we could successfully obtain live data from the radar and were able to interface it with the Jetson nano module provided to perform voxelisation and classification individually to each set of data points for a single activity. The latency was very minimal about 2ms and the output changed immediately after the activity performed was changing live. However the 
-
+Post the setup and trying to get both the sides of the pipeline working, we could successfully obtain live data from the radar and were able to interface it with the Jetson nano module provided to perform voxelisation and classification individually to each set of data points for a single activity. The latency was very minimal about 2ms and the output changed immediately after the activity performed was changing live. However there was a dip in prediction accuracy and post a session, only about 30 percent of the activites were predicted correctly. |
+While trying to delve deeper into what could possibly cause a drop in the prediction accuracy of the CNN-LSTM model which originally had an accuracy of 90+ percent, we tried to verify the following parts of the pipeline -
+1. Since the main difference from the original implementation was that live data was processed one activity at a time instead of the complete set of data pummped in for classification at once, the same was replicated on known data.  By serially pumping in data for one activity at a time from the existing RadHAR test dataset, we tried to verify if the output predicted is right and the accuracy for this turned out to be really high.
+2. We also tried to verify if the preprocessing part of the pipeline was happening properly 
 
 # 5. Discussion and Conclusions
 
