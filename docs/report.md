@@ -45,6 +45,9 @@ A.	MM Wave Radar – the radar used for data collection of the activities is TI�
 
 i.	Data collection on mmwave radar - Although there is pre existing data , we need to retrain the model with new data. We performed 5 different activities which include Walking, Squats, Jacks, Jumping and Boxing. Data is collected in .txt files and finally used to create voxelized representation of point clouds. While collection, each of the data is about         long. The sampling rate is        . And the data collected contains information like intensity, velocity, range and angle. 
 
+![WhatsApp Image 2022-12-10 at 10 30 07 (1)](https://user-images.githubusercontent.com/100503618/206874989-71a80173-154f-4f72-84f5-8f6ba556f4ef.jpeg | width=100)
+![WhatsApp Image 2022-12-10 at 10 29 09](https://user-images.githubusercontent.com/100503618/206874992-aa315f86-de4c-4dcd-ad9d-6ea9b43cc909.jpeg | width=100)
+
 B.	Jetson Nano platform – Post data collection, the pre processing and  classification is done on the python scripts running on the Jetson Nano developer kit .The Jetson Nano consists of a Maxwell GPU and an ARM Cortex CPU, thus having high compute power and is thus useful in data intensive or  computer vision applications. It’s connected to the radar using a USB interface. It has a Ubuntu-based Linux environment and for this application other dependencies like python and TensorRT have been installed. For both Data Preprocessing and classification, we’ve used the code developed by the RadHAR authors with slight modifications.
 
 i.	Data Preprocessing – Here the point clouds are converted to voxels (i.e. dimensions 10*32*32). The value here of a voxel is the number of data points which are within the boundaries. The activities performed  - talk about window size -
