@@ -58,12 +58,16 @@ ii.	Classifiers – Although RadHAR tried deriving efficiency and testing on  ab
 
 
 # 4. Evaluation and Results
-Post the setup and trying to get both the sides of the pipeline working, we could successfully obtain live data from the radar and were able to interface it with the Jetson nano module provided to perform voxelisation and classification individually to each set of data points for a single activity. The latency was very minimal about 2ms and the output changed immediately after the activity performed was changing live. However there was a dip in prediction accuracy and post a session, only about 30 percent of the activites were predicted correctly. |
+Post the setup and trying to get both the sides of the pipeline working, we could successfully obtain live data from the radar and were able to interface it with the Jetson nano module provided to perform voxelisation and classification individually to each set of data points for a single activity. The latency was very minimal about 2ms and the output changed immediately after the activity performed was changing live. However there was a dip in prediction accuracy and post a session, only about 30 percent of the activites were predicted correctly. 
 While trying to delve deeper into what could possibly cause a drop in the prediction accuracy of the CNN-LSTM model which originally had an accuracy of 90+ percent, we tried to verify the following parts of the pipeline -
 1. Since the main difference from the original implementation was that live data was processed one activity at a time instead of the complete set of data pummped in for classification at once, the same was replicated on known data.  By serially pumping in data for one activity at a time from the existing RadHAR test dataset, we tried to verify if the output predicted is right and the accuracy for this turned out to be really high.
-2. We also tried to verify if the preprocessing part of the pipeline was happening properly 
+2. We also tried to verify if the preprocessing part of the pipeline was happening properly. Using known RadHAR test data we verified the output that we got post voxelisation while pumping in data one at a time versus the preprocessed data that was already present in a chunk. Since both these results were same as well, this part of the pipeline was also functioning alright.
 
 # 5. Discussion and Conclusions
+
+Therefore since the hardware/ software setup and interfacing was done right, the main part that could be causing the issue is the kind of data pumped in live. 
+- Mismatch in the config file used while data collection is done using the mmwave radar:
+- The CNN_LSTM pretrained model could have been trained only on limited environments and people: 
 
 # 6. Challenges faced 
 We ran into the following issues while trying to configure the hardware provided and software  -
