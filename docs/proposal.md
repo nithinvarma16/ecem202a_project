@@ -30,21 +30,17 @@ What are the challenges and risks?
 ## 7. Metrics of Success
 Latency could be measured in time (seconds) delay from the point of collection till the classification is obtained. Percentage accuracy with the right and wrong predictions can also be measured.
 
-## 8. Execution Plan
+## 8. Related Work
 
-Describe the key tasks in executing your project, and in case of team project describe how will you partition the tasks.
-
-## 9. Related Work
-
-### 9.a. Papers
+### 8.a. Papers
 
 Papers - Akash Deep Singh, Sandeep Singh Sandha, Luis Garcia, and Mani Srivastava. 2019. RadHAR: Human Activity Recognition from Point Clouds Generated through a Millimeter-wave Radar. In Proceedings of the 3rd ACM Workshop on Millimeter-wave Networks and Sensing Systems (mmNets'19). Association for Computing Machinery, New York, NY, USA, 51–56. https://doi.org/10.1145/3349624.3356768
 
-### 9.b. Datasets
+### 8.b. Datasets
 
  Datasets used – Original data present on https://github.com/nesl/RadHAR/tree/master/Data
 
-### 9.c. Software
+### 8.c. Software
 
 - Mmwave sdk
 - Ti mmwave data visualizer v2.1.
@@ -53,7 +49,7 @@ Papers - Akash Deep Singh, Sandeep Singh Sandha, Luis Garcia, and Mani Srivastav
 - Jetson flash software
 - Python : Keras, tensorflow
 
-## 10. References
+## 9. References
 
 1. Akash Deep Singh, Sandeep Singh Sandha, Luis Garcia, and Mani Srivastava. 2019. RadHAR: Human Activity Recognition from Point Clouds Generated through a Millimeter-wave Radar. In Proceedings of the 3rd ACM Workshop on Millimeter-wave Networks and Sensing Systems (mmNets'19). Association for Computing Machinery, New York, NY, USA, 51–56. https://doi.org/10.1145/3349624.3356768.
 2. D. Salami, R. Hasibi, S. Palipana, P. Popovski, T. Michoel and S. Sigg, "Tesla-Rapture: A Lightweight Gesture Recognition System from mmWave Radar Sparse Point Clouds," in IEEE Transactions on Mobile Computing, doi: 10.1109/TMC.2022.3153717.
