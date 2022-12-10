@@ -10,6 +10,5 @@ This project implements a human activity recognition system in order to classify
 # Required Submissions
 
 * [Proposal](proposal)
-* [Midterm Checkpoint Presentation Slides](http://)
 * [Final Presentation Slides](http://)
 * [Final Report](report)
