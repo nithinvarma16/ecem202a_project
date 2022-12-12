@@ -41,7 +41,7 @@ Papers - Akash Deep Singh, Sandeep Singh Sandha, Luis Garcia, and Mani Srivastav
  Datasets used – Original data present on https://github.com/nesl/RadHAR/tree/master/Data
 
 ### 8.c. Software
-
+Various software used during the course of the project include:
 - Mmwave sdk
 - Ti mmwave data visualizer v2.1.
 - TI code composer studio.
