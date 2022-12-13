@@ -10,5 +10,8 @@ This project implements a human activity recognition system in order to classify
 # Required Submissions
 
 * [Proposal](proposal)
-* [Final Presentation Slides](http://)
+* [Final Presentation Slides](https://docs.google.com/presentation/d/1LEueKFinSaYRZRIE4L3bn9PwPoZocdIhcAe1IjP5ahc/edit#slide=id.g1b267e48dc1_0_3450)
 * [Final Report](report)
+* [Project Repo](https://github.com/nithinvarma16/M202_Project_Repo)
+* [Demo Videos](https://)
+* 
