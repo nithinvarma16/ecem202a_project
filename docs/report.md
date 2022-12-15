@@ -9,7 +9,7 @@
 
 # Abstract
 
-This project implements a human activity recognition system in order to classify data into five different classes namely -boxing , jacks, jumping, squats and walking. In the implementation, point cloud data is obtained using the mmwave radar. This is in turn voxelised and classified using a CNN-LSTM model to obtain the output. Although several models exist for this classification, our goal is to obtain live data and deploy the CNN_LSTM model on a Jetson nano platform to provide an output with the least latency. Post setting up the entire pipeline, we could successfully obtain live data from the radar and were able to interface it with the Jetson nano module provided to perform voxelisation and classification individually to each instance. We also explore why the classification accuracy was lower than expected once used live.
+This project implements a human activity recognition system in order to classify data into five different classes namely -boxing , jacks, jumping, squats and walking. In the implementation, point cloud data is obtained using the mmwave radar. This is in turn voxelised and classified using a CNN-LSTM model to obtain the output. Our goal is to obtain live data and deploy the CNN_LSTM model on a Jetson nano platform to provide an output with the least latency. Post setting up the entire pipeline, we could successfully obtain live data from the radar and were able to interface it with the Jetson nano module provided to perform voxelisation and classification individually to each instance. We also explore why the classification accuracy was lower than expected once used live.
 
 # 1. Introduction
 
@@ -24,7 +24,7 @@ This project implements a human activity recognition system in order to classify
 - Seamless communication interface between the MMwave Radar and Nvidia Jetson module to extract the required communication.
 * Metrics of Success: 
 - By making the model online instead of offline, it can be utilised in real-time applications like those discussed earlier. Prediction accuracy should be recorded to compare it with the original model.
-- Comparison in latency between the original ROS interfacing used vs the serial interfacing used in the project
+- Comparison in latency between the previous ROS interfacing used vs the serial interfacing used in the project
 
 # 2. Background
 Human activity recognition is now performed using a variety of acquisition devices ranging from smartphones sensors, wearable devices, and video cameras. As the applications utilizing this information are growing, so is the AI behind it to extract more information. As more sensing technologies for HAR come into picture, optimizing the networks deployed and improving the reliability of the sensing devices are always actively researched. Identifying user’s actions can be used actively to provide them with assistance. Human activity recognition is broadly classified into – vision based, and sensor based. Since vision based uses a lot of CV techniques, it could have issues like privacy leaks and occlusion making it the unfavorable choice in such situations. Hence in such cases, sensor-based methods like accelerometers, acoustic sensors and radars are used.
