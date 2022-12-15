@@ -15,18 +15,18 @@ Our project picks up from what was last implemented by the framework RadHAR. Thi
 
 ## 4. Potential Impact
 
-If successful this device could be placed in environments where monitoring needs to be done on a group, for example, in a daycare for toddlers, at an old age home for elderly people or in hospitals for patients. It can also be effectively used to track workouts. In such scenarios camera-based sensing could be another option, but this might end up invading privacy, thus making the users uncomfortable. More importantly, these devices are agnostic to lighting conditions. Therefore, they are more efficient than vision techniques, where lighting contitions are very important factors to maintain accuracy. Hence radars can be efficiently utilized with contactless sensing in such places since it collects a very minimal data to train the networks. In most of the applications mentioned above, it is essential that the activity is interpreted or classified real-time. Hence, our project focuses on implementing the already existing model real-time to make these algorithms utilisable in such applications. We will also try to reduce the latency of the predictions and maintain the previous accuracy of the model.
+If successful this device could be placed in environments where monitoring needs to be done on a group, for example, in a daycare for toddlers, at an old age home for elderly people or in hospitals for patients. It can also be effectively used to track workouts. In such scenarios camera-based sensing could be another option, but this might end up invading privacy, thus making the users uncomfortable. More importantly, these devices are agnostic to lighting conditions. Therefore, they are more efficient than vision techniques, where lighting contitions are very important factors to maintain accuracy. Hence radars can be efficiently utilized with contactless sensing in such places since it collects a very minimal data to train the networks. In most of the applications mentioned above, it is essential that the activity is interpreted or classified real-time. Hence, our project focuses on implementing the already existing model real-time to make these algorithms utilisable in such applications. We will also try to maintain the previous accuracy of the model.
 
 
 ## 5. Requirements for Success
 - Making the model online instead of offline
 - Maintain the accuracy within the same accuracy margin as mentioned in the offline implementation of the model.
 - Ease to run the module with limited resources and computing power on jetson
-- Seamless commulnication interface between the MMWAVE Radar and Nvidia Jetson module to extract the required communication.
+- Seamless communication interface between the MMWAVE Radar and Nvidia Jetson module to extract the required communication.
 
 ## 6. Metrics of Success
-By making the model online instead of offline, the delay from the point of collection till the classification is obtained. 
-Accuracy in order to maintain the right vs wrong predictions should be recorded in comparison with the original model.
+By making the model online instead of offline, it can be utilised in real-time applications like those discussed earlier. 
+Prediction accuracy should be recorded to compare it with the original model.
 
 ## 7. Related Work
 
