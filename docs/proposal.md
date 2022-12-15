@@ -25,8 +25,9 @@ If successful this device could be placed in environments where monitoring needs
 - Seamless communication interface between the MMWAVE Radar and Nvidia Jetson module to extract the required communication.
 
 ## 6. Metrics of Success
-By making the model online instead of offline, it can be utilised in real-time applications like those discussed earlier. 
-Prediction accuracy should be recorded to compare it with the original model.
+- By making the model online instead of offline, it can be utilised in real-time applications like those discussed earlier. Prediction accuracy should be recorded to compare it with the original model.
+- Comparison in latency between the original ROS interfacing used vs the serial interfacing used in the project
+
 
 ## 7. Related Work
 
