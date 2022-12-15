@@ -9,8 +9,8 @@ This project implements a human activity recognition system in order to classify
 
 # Required Submissions
 
-* [Proposal](proposal)
+* [Proposal](https://github.com/nithinvarma16/ecem202a_project/blob/main/docs/proposal.md)
 * [Final Presentation Slides](https://docs.google.com/presentation/d/1LEueKFinSaYRZRIE4L3bn9PwPoZocdIhcAe1IjP5ahc/edit#slide=id.g1b267e48dc1_0_3450)
-* [Final Report](report)
+* [Final Report](https://github.com/nithinvarma16/ecem202a_project/blob/main/docs/report.md)
 * [Project Repo](https://github.com/nithinvarma16/M202_Project_Repo)
 * [Demo Videos](https://drive.google.com/drive/u/1/folders/1hHJo0thuWHT42DP0pKj5_GDLLncPNVTY)
